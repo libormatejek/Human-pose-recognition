@@ -37,3 +37,5 @@ Vyhodnocovací script byl napsán v jazyce python. Pomocí knihovny numpy zpraco
 „Score“ na obrázku vyhodnoceném algoritmem je však podmíněno tak, že je přičten bod pouze v momentě, kdy je stejný pixel vyhodnocen jako např. dolní část ruky, na obou obrázcích. Nebo-li je červený (255,0,0) i na referenčím obrázku.
 Poměrem těchto získaných počtů barevných pixelů získáváme hodnotu IoU (Intersection over Union).  Hodnoty IoU jsou vyhodnocovány zvlášť pro každou končetinu a dále průměrovány s postupem zpracování celého testovacího subsetu. Vyhodnocení lze vidět v grafu.
 
+
+
