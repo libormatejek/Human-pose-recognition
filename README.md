@@ -28,3 +28,12 @@ Trup je rozeznáván pomocí 4 keypointů, 2 v ramenou a 2 na začátku nohou. N
 
 ***Optimizer***   
 Algoritmus zvýraznění body parts je založen na rozšíření spojnic definovaných keypointů, které jsou výstupem z natrénované neuronové site resnet_50_keypoints. Keypointy dávají lokaci a rošíření poskytuje výplň definovaných  oblastí jednotlivých částí těla.  Rozšíření je navrženo takovým způsobem, že šířka výplně je odvozena z délky příslušných spojnic bodů. Jedná se o lineární funkční závislost, kdy vzniká potřeba vhodným způsobem určit multiplikativní konstanty v definici výplně. Pro určení se využívá optimalizační strategie, kdy definujeme hodnotící funkci jako rozdíl počtu bodů které vyhovují ground true a počty bodů, které jsou mimo oblast ground true.  Algoritmus je vyhodnocován přes definovaný interval multiplikativnich konstant. Výsledkem jsou jednotlivé závislosti hodnotícího kriteria na hodnotě konstanty v daném intervalu pro každou body part. Jednotlié funkce vykazují hladký průběh s výrazným maximum, kde  konstantu určíme právě z tohoto extremu
+
+***Intersection Over Union (IoU)***  
+Vyhodnocení úspěšnosti mé nadstavby na keypoint R-CNN pro rozlišování lidských končetin, bylo řešeno metodou porovnávání pixelů na groud truth obrázku, tedy dokonalé segmentovaného lidského těla, s pixely na obrázku vyhodnoceném právě řešeným algoritmem.
+Testovací sada byla vybrána z volně dostupného datasetu MPII. Jedná se o dataset zaměřený na lidské postavy v různých kontextech s různými světelnými podmínkam  
+
+Vyhodnocovací script byl napsán v jazyce python. Pomocí knihovny numpy zpracovává vstupní obrázky ve formě rgb tezorů a počítá počet například červené (255,0,0) pixely, kterým přiřadí význam dolní část ruky. Tento postup je aplikován na obrázek s groud truth i na obrázek z rozpoznávacího algoritmu.
+„Score“ na obrázku vyhodnoceném algoritmem je však podmíněno tak, že je přičten bod pouze v momentě, kdy je stejný pixel vyhodnocen jako např. dolní část ruky, na obou obrázcích. Nebo-li je červený (255,0,0) i na referenčím obrázku.
+Poměrem těchto získaných počtů barevných pixelů získáváme hodnotu IoU (Intersection over Union).  Hodnoty IoU jsou vyhodnocovány zvlášť pro každou končetinu a dále průměrovány s postupem zpracování celého testovacího subsetu. Vyhodnocení lze vidět v grafu.
+
