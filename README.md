@@ -36,6 +36,6 @@ Testovací sada byla vybrána z volně dostupného datasetu MPII. Jedná se o da
 Vyhodnocovací script byl napsán v jazyce python. Pomocí knihovny numpy zpracovává vstupní obrázky ve formě rgb tezorů a počítá počet například červené (255,0,0) pixely, kterým přiřadí význam dolní část ruky. Tento postup je aplikován na obrázek s groud truth i na obrázek z rozpoznávacího algoritmu.
 „Score“ na obrázku vyhodnoceném algoritmem je však podmíněno tak, že je přičten bod pouze v momentě, kdy je stejný pixel vyhodnocen jako např. dolní část ruky, na obou obrázcích. Nebo-li je červený (255,0,0) i na referenčím obrázku.
 Poměrem těchto získaných počtů barevných pixelů získáváme hodnotu IoU (Intersection over Union).  Hodnoty IoU jsou vyhodnocovány zvlášť pro každou končetinu a dále průměrovány s postupem zpracování celého testovacího subsetu. Vyhodnocení lze vidět v grafu.
-
+![Iou](IoU.png)
 
 
