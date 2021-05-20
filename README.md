@@ -1,6 +1,6 @@
 # Human-pose-recognition
 	
-  Zobrazovací kód
+  ****Zobrazovací kód****
   
   Hlavní main funkce načte parametry z příkazové řádky,viz tabulka
 | Parametr  | Second Header | First Header  |
